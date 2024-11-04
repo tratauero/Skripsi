@@ -1,0 +1,123 @@
+.employe {
+  a {
+    text-decoration: none;
+    &:hover {
+      .allcrew,
+      .icons {
+        transform: scale(1.2);
+        transition: transform 0.5s ease-in-out;
+      }
+    }
+  }
+  .icons {
+    transition: transform 0.5s ease-in-out;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    img {
+      mix-blend-mode: difference;
+      border-radius: 50%;
+      width: auto;
+      max-height: 300px;
+    }
+    span {
+      color: #000;
+      font-family: Inter;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin: 12px auto;
+    }
+  }
+  .allcrew {
+    background: #000;
+    transition: transform 0.5s ease-in-out;
+    padding: 40px 80px;
+    border-radius: 18px;
+    .crew-content {
+      img {
+        mix-blend-mode: difference;
+        border-radius: 50%;
+      }
+      span {
+        color: #fff;
+        font-family: Inter;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        margin-left: 12px;
+      }
+    }
+    .corporate {
+      img {
+        border-radius: 50%;
+        width: 34px;
+      }
+      span {
+        color: #fff;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
+  }
+  .modal {
+    .modal-content {
+      background: #d96732 !important;
+      padding: 20px;
+      .modal-body {
+        .input-group {
+          label {
+            color: #202124;
+            font-family: Inter;
+            font-size: 15px;
+            font-style: italic;
+            font-weight: 700;
+            line-height: normal;
+            text-align: center;
+          }
+          input {
+            font-style: normal !important;
+          }
+        }
+        .radio-input {
+          label {
+            text-decoration-line: underline;
+          }
+          label.radio {
+            width: 130px;
+            display: flex;
+            justify-content: space-between;
+            text-decoration-line: none;
+          }
+          input[type="radio"] {
+            appearance: none; /* Menghilangkan default radio */
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #000; /* Warna border default */
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            &:checked {
+              border: 2px solid #000; /* Warna border saat checked */
+              background-color: #000; /* Warna isi saat checked */
+            }
+          }
+        }
+        .btn {
+          background: transparent;
+          i {
+            font-size: 150px;
+          }
+        }
+      }
+    }
+  }
+}

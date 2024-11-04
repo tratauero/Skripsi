@@ -1,0 +1,147 @@
+.add {
+  .actionbtn {
+    position: relative;
+    z-index: 1000;
+  }
+  .actionlist {
+    position: relative;
+    background: red;
+    .button-list {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      background: #000;
+      border-radius: 30px !important;
+      background: #000 !important;
+      padding: 21px;
+      width: 300px;
+      z-index: 999;
+      transform: translateY(0);
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+      .actionbtn_add {
+        width: 100%;
+        text-align: start;
+        border-radius: 30px;
+        background: #d9d9d9;
+        padding: 14px 25px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin: 8px auto;
+        i {
+          font-size: 41px;
+          margin-right: 12px;
+        }
+      }
+      &.hide {
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-5%);
+        opacity: 0;
+        z-index: -1;
+      }
+    }
+    .observeform,
+    .installform,
+    .obsinsform {
+      position: absolute;
+      top: 10px;
+      right: 0;
+      background: #000;
+      border-radius: 30px !important;
+      background: #000 !important;
+      padding: 21px;
+      z-index: 999;
+      width: fit-content;
+      transform: translateY(0);
+      opacity: 1;
+      display: block;
+      transition-delay: display 0.3s;
+      transition: all 0.3s ease-in-out;
+      &.hide {
+        transition: all 0.3s ease-in-out;
+        transform: translateY(-5%);
+        opacity: 0;
+        display: none;
+        z-index: -1;
+      }
+      .card {
+        border: none;
+        background: transparent;
+        width: fit-content;
+        .card-header {
+          border-radius: 30px;
+          background: #d9d9d9;
+          margin-bottom: 12px;
+          i {
+            background: #fff;
+            font-size: 16px;
+            border-radius: 50%;
+            padding: 8px;
+            margin-right: 12px;
+          }
+          span {
+            color: #000;
+            font-family: Inter;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+          }
+        }
+        .card-body {
+          padding: 0;
+          margin: 0;
+          flex-wrap: wrap;
+          form {
+            .form__ {
+              display: flex;
+              justify-content: center;
+              align-items: star;
+              gap: 32px;
+              padding: 12px;
+            }
+            .form-container {
+              display: flex;
+              gap: 12px;
+              .column {
+                width: 200px;
+                position: relative;
+                label {
+                  color: #fff;
+                  font-family: Inter;
+                  font-size: 15px;
+                  font-style: italic;
+                  font-weight: 200;
+                  line-height: normal;
+                }
+                input {
+                  border-radius: 30px;
+                  background: #d9d9d9;
+                }
+              }
+              .btn {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                border-radius: 30px;
+                background: #00b050;
+                padding: 9px 18px;
+                width: 100%;
+                span {
+                  // font
+                  color: #000;
+                  font-family: Inter;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 700;
+                  line-height: normal;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboard</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/style.min.css" />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+
+    <!-- icon -->
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.5.0/css/rowReorder.bootstrap5.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.bootstrap5.css" />
+  </head>
+
+  <body>
+    <div
+      class="wrapper"
+      x-data="{ expand: true }"
+      x-init="
+         if (window.innerWidth < 992) { expand = false }
+         window.addEventListener('resize', () => {
+           if (window.innerWidth < 992) {
+             expand = false;
+           } else {
+             expand = true;
+           }
+         });
+       "
+    >
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="container-fluid m-0">
+          <div class="heading" :class="{'expand': expand}">
+            <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#logo">
+              <img src="asset/img/logo/logo.webp" class="me-4" alt="" />
+            </button>
+            <!-- modal foto -->
+            <div class="modal fade modal-view" id="logo" tabindex="-1" data-bs-keyboard="true" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-body d-flex justify-content-center align-items-center">
+                    <img src="asset/img/logo/logo.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="brand">
+              <span>TAIRIPA PUTRA MANDIRI</span>
+            </div>
+          </div>
+
+          <button @click="expand = !expand" class="bttn toggle me-auto" :class="{'open' : expand}">
+            <!-- <i class="fas fa-bars fa-2x"></i> -->
+            <div class="bar" id="top"></div>
+            <div class="bar" id="center"></div>
+            <div class="bar" id="bottom"></div>
+          </button>
+          <div class="page-title mx-auto">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="logout ms-auto">
+            <a href="login.html" class="bttn">
+              <!-- <i class="fad fa-sign-out-alt fa-2x"></i> -->
+            </a>
+          </div>
+        </div>
+      </nav>
+      <!-- end navbar -->
+      <!-- sig writing -->
+      <section class="sign">
+        <div class="container-fluid m-0 p-0">
+          <div class="sign-content d-flex align-items-center">
+            <div class="profile d-flex align-items-center" :class="{'expand': expand}">
+              <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#modalprofile">
+                <img src="asset/img/profile/profile1.png" class="me-4" alt="" />
+              </button>
+              <div class="details">
+                <div class="role">
+                  <span>ADMINISTRATOR</span>
+                </div>
+                <div class="name">
+                  <span>DOMINGGUS CAVIN</span>
+                </div>
+              </div>
+              <!-- modal foto -->
+              <div class="modal fade modal-view" id="modalprofile" tabindex="-1" data-bs-keyboard="true" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                      <img src="asset/img/profile/profile1.png" alt="" />
+                      <div class="detail text-center">
+                        <div class="name">
+                          <span>DOMINGGUS CAVIN</span>
+                        </div>
+                        <div class="role">
+                          <span>Administrator</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="path me-auto"></div>
+            <span class="ms-auto me-4">SIGN WRITING</span>
+          </div>
+        </div>
+      </section>
+      <div class="wrapper-content">
+        <!-- sidebar -->
+        <aside class="sidebar" :class="{'expand': expand}">
+          <ul class="list-menu">
+            <li class="list-item">
+              <a href="dashboard.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-home-alt"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Home</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="order.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-shopping-cart"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Order</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="historyorder.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-books"></i>
+                </div>
+                <div class="menu-name">
+                  <span>History Order</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="sign.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-tools"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Sign Instalation</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="salary.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-hand-holding-usd"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Salary</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item active">
+              <a href="absent.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-clipboard-user"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Absent</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="employe.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-users"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Employe</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item out">
+              <!-- Modal trigger button -->
+              <button type="button" class="btn btn-logout" data-bs-toggle="modal" data-bs-target="#modalId">
+                <div class="icon">
+                  <i class="fad fa-sign-out"></i>
+                </div>
+                <div class="menu-name">
+                  <span>LOGOUT</span>
+                </div>
+              </button>
+
+              <!-- Modal Body -->
+              <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+              <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <h5 class="modal-title" id="modalTitleId">Modal title</h5> -->
+                      <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <div class="modal-body text-center" style="color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal">Are you want to logout?</div>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <button type="button" class="btn" data-bs-dismiss="modal" style="border-radius: 30px; background: #ff1010; color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal">Close</button>
+                      <a href="login.html" class="btn m-0" style="border-radius: 30px; background: #6d6d6d; color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal; padding: 6px 12px">Ok</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </aside>
+        <!-- main content -->
+        <div class="main">
+          <main>
+            <section class="content">
+              <div class="card_">
+                <div class="card-body">
+                  <div class="head-menu d-flex justify-content-between align-items-center">
+                    <h2 class="card-title">EMPLOYEE DATA TAIRIPA PUTRA MANDIRI</h2>
+                    <div class="action d-flex justify-content-center align-items-center">
+                      <a href="add_absent.html" class="actionbtn">
+                        <i class="fad fa-plus-circle"></i>
+                        <span>Tambah Order</span>
+                      </a>
+                      <!-- <button type="button" class="actionbtn" data-bs-toggle="modal" data-bs-target="#modaldelete"><i class="fad fa-trash-alt"></i></button> -->
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <table id="example" class="table display nowrap" style="width: 100%">
+                        <thead>
+                          <tr>
+                            <th>NO</th>
+                            <th>ID Pegawai</th>
+                            <th>Nama Pegawai</th>
+                            <th>Jenis Kelamin</th>
+                            <th>Jabatan</th>
+                            <th>Status</th>
+                            <th>Masuk</th>
+                            <th>Sakit</th>
+                            <th>Absent</th>
+                            <!-- <th class="cbox"></th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>ID-10001</td>
+                            <td>Erwin Nap</td>
+                            <td>Laki-laki</td>
+                            <td>Admin</td>
+                            <td>Kontrak</td>
+                            <td>29 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>2</td>
+                            <td>ID-10002</td>
+                            <td>Siti Aisyah</td>
+                            <td>Perempuan</td>
+                            <td>Crew</td>
+                            <td>Non Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>ID-10003</td>
+                            <td>Budi Santoso</td>
+                            <td>Laki-laki</td>
+                            <td>Supervisor</td>
+                            <td>Kontrak</td>
+                            <td>28 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>ID-10004</td>
+                            <td>Anita Maharani</td>
+                            <td>Perempuan</td>
+                            <td>Admin</td>
+                            <td>Non Kontrak</td>
+                            <td>31 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>ID-10005</td>
+                            <td>David Pranoto</td>
+                            <td>Laki-laki</td>
+                            <td>Crew</td>
+                            <td>Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>1 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>ID-10006</td>
+                            <td>Lisa Purwanti</td>
+                            <td>Perempuan</td>
+                            <td>Supervisor</td>
+                            <td>Non Kontrak</td>
+                            <td>29 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>7</td>
+                            <td>ID-10007</td>
+                            <td>Rahmat Kurniawan</td>
+                            <td>Laki-laki</td>
+                            <td>Crew</td>
+                            <td>Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>8</td>
+                            <td>ID-10008</td>
+                            <td>Dewi Ayu</td>
+                            <td>Perempuan</td>
+                            <td>Admin</td>
+                            <td>Non Kontrak</td>
+                            <td>31 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>9</td>
+                            <td>ID-10009</td>
+                            <td>Rizky Firmansyah</td>
+                            <td>Laki-laki</td>
+                            <td>Supervisor</td>
+                            <td>Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>1 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>10</td>
+                            <td>ID-10010</td>
+                            <td>Siti Nurhaliza</td>
+                            <td>Perempuan</td>
+                            <td>Crew</td>
+                            <td>Non Kontrak</td>
+                            <td>29 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>11</td>
+                            <td>ID-10011</td>
+                            <td>Adi Putra</td>
+                            <td>Laki-laki</td>
+                            <td>Admin</td>
+                            <td>Kontrak</td>
+                            <td>28 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>12</td>
+                            <td>ID-10012</td>
+                            <td>Rina Lestari</td>
+                            <td>Perempuan</td>
+                            <td>Supervisor</td>
+                            <td>Non Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>13</td>
+                            <td>ID-10013</td>
+                            <td>Hendri Kusuma</td>
+                            <td>Laki-laki</td>
+                            <td>Crew</td>
+                            <td>Kontrak</td>
+                            <td>29 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>14</td>
+                            <td>ID-10014</td>
+                            <td>Maya Pertiwi</td>
+                            <td>Perempuan</td>
+                            <td>Admin</td>
+                            <td>Non Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>1 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>15</td>
+                            <td>ID-10015</td>
+                            <td>Joko Widodo</td>
+                            <td>Laki-laki</td>
+                            <td>Supervisor</td>
+                            <td>Kontrak</td>
+                            <td>29 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>16</td>
+                            <td>ID-10016</td>
+                            <td>Dian Purnama</td>
+                            <td>Perempuan</td>
+                            <td>Crew</td>
+                            <td>Non Kontrak</td>
+                            <td>28 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>17</td>
+                            <td>ID-10017</td>
+                            <td>Taufik Hidayat</td>
+                            <td>Laki-laki</td>
+                            <td>Admin</td>
+                            <td>Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>18</td>
+                            <td>ID-10018</td>
+                            <td>Intan Permata</td>
+                            <td>Perempuan</td>
+                            <td>Supervisor</td>
+                            <td>Non Kontrak</td>
+                            <td>29 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>19</td>
+                            <td>ID-10019</td>
+                            <td>Yusuf Maulana</td>
+                            <td>Laki-laki</td>
+                            <td>Crew</td>
+                            <td>Kontrak</td>
+                            <td>30 hari</td>
+                            <!-- Masuk -->
+                            <td>2 hari</td>
+                            <!-- Sakit -->
+                            <td>1 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                          <tr>
+                            <td>20</td>
+                            <td>ID-10020</td>
+                            <td>Fitri Amelia</td>
+                            <td>Perempuan</td>
+                            <td>Admin</td>
+                            <td>Non Kontrak</td>
+                            <td>31 hari</td>
+                            <!-- Masuk -->
+                            <td>1 hari</td>
+                            <!-- Sakit -->
+                            <td>2 hari</td>
+                            <!-- Absen -->
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Form History yang hanya ada satu -->
+            <div id="form-history-container" class="form-history d-none">
+              <form action="">
+                <div class="input">
+                  <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                    <label for="senderName">Box Truck sender name</label>
+                    <input type="text" class="form-control" id="senderName" />
+                  </div>
+                  <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                    <label for="deliveryDate">Date</label>
+                    <input type="date" class="form-control" id="deliveryDate" />
+                  </div>
+                  <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                    <label for="receiptUpload">Upload receipt sign (box truck sender)</label>
+                    <input type="file" class="form-control" id="receiptUpload" />
+                  </div>
+                  <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                    <label for="photoProof">Photo proof of delivery</label>
+                    <input type="file" class="form-control" id="photoProof" />
+                  </div>
+                </div>
+                <button class="btn d-flex flex-column justify-content-center align-items-center"><span>Done</span> <i class="fad fa-paper-plane"></i></button>
+              </form>
+            </div>
+            <script>
+              document.querySelectorAll(".done").forEach(function (button) {
+                button.addEventListener("click", function () {
+                  // Dapatkan baris terdekat (tr) dari tombol yang diklik
+                  const row = this.closest("tr");
+
+                  // Ambil data dari baris yang bersangkutan
+                  const senderName = row.children[4].textContent; // Contoh: Nama di kolom ke-5
+                  const deliveryDate = row.children[1].textContent; // Contoh: Tanggal di kolom ke-2
+
+                  // Temukan form-history global
+                  const formHistory = document.getElementById("form-history-container");
+
+                  // Pindahkan form-history ke tempat yang sesuai (misal, setelah tombol yang diklik)
+                  this.parentElement.appendChild(formHistory);
+
+                  // Isi form dengan data dari baris yang dipilih
+                  document.getElementById("senderName").value = senderName;
+                  document.getElementById("deliveryDate").value = deliveryDate;
+
+                  // Tampilkan form
+                  formHistory.classList.remove("d-none");
+                });
+              });
+            </script>
+
+            <!-- footer -->
+            <footer>@ 2024 Tairipa Putra Mandiri. All rights reserved</footer>
+          </main>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="modaldelete" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <span>Are you sure want to delete the order?</span>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-bs-dismiss="modal">Cancle</button>
+              <button type="button" class="btn del">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <!-- chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="asset/js/style.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function logout() {
+        Swal.fire({
+          title: "Are you sure you want to logout?",
+          text: "You will need to login again to access your account!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, logout!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Aksi logout dilakukan di sini, misalnya redirect ke halaman logout
+            window.location.href = "/logout"; // Ganti dengan URL logout yang sesuai
+          }
+        });
+      }
+    </script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.5.0/js/dataTables.rowReorder.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.5.0/js/rowReorder.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.js"></script>
+    <script>
+      new DataTable("#example", {
+        responsive: true,
+        rowReorder: {
+          selector: "td:nth-child(2)",
+        },
+        // columnDefs: [
+        //   {
+        //     orderable: false,
+        //     render: DataTable.render.select(),
+        //     targets: -1,
+        //   },
+        // ],
+        // select: {
+        //   style: "os",
+        //   selector: "td:last-child",
+        // },
+        order: [[1, "asc"]],
+      });
+    </script>
+  </body>
+</html>

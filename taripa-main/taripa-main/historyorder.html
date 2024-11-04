@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashboard</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="css/style.min.css" />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+
+    <!-- icon -->
+    <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.5.0/css/rowReorder.bootstrap5.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.bootstrap5.css" />
+  </head>
+
+  <body>
+    <div
+      class="wrapper"
+      x-data="{ expand: true }"
+      x-init="
+         if (window.innerWidth < 992) { expand = false }
+         window.addEventListener('resize', () => {
+           if (window.innerWidth < 992) {
+             expand = false;
+           } else {
+             expand = true;
+           }
+         });
+       "
+    >
+      <!-- navbar -->
+      <nav class="navbar">
+        <div class="container-fluid m-0">
+          <div class="heading" :class="{'expand': expand}">
+            <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#logo">
+              <img src="asset/img/logo/logo.webp" class="me-4" alt="" />
+            </button>
+            <!-- modal foto -->
+            <div class="modal fade modal-view" id="logo" tabindex="-1" data-bs-keyboard="true" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-body d-flex justify-content-center align-items-center">
+                    <img src="asset/img/logo/logo.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="brand">
+              <span>TAIRIPA PUTRA MANDIRI</span>
+            </div>
+          </div>
+
+          <button @click="expand = !expand" class="bttn toggle me-auto" :class="{'open' : expand}">
+            <!-- <i class="fas fa-bars fa-2x"></i> -->
+            <div class="bar" id="top"></div>
+            <div class="bar" id="center"></div>
+            <div class="bar" id="bottom"></div>
+          </button>
+          <div class="page-title mx-auto">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="logout ms-auto">
+            <a href="login.html" class="bttn">
+              <!-- <i class="fad fa-sign-out-alt fa-2x"></i> -->
+            </a>
+          </div>
+        </div>
+      </nav>
+      <!-- end navbar -->
+      <!-- sig writing -->
+      <section class="sign">
+        <div class="container-fluid m-0 p-0">
+          <div class="sign-content d-flex align-items-center">
+            <div class="profile d-flex align-items-center" :class="{'expand': expand}">
+              <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#modalprofile">
+                <img src="asset/img/profile/profile1.png" class="me-4" alt="" />
+              </button>
+              <div class="details">
+                <div class="role">
+                  <span>ADMINISTRATOR</span>
+                </div>
+                <div class="name">
+                  <span>DOMINGGUS CAVIN</span>
+                </div>
+              </div>
+              <!-- modal foto -->
+              <div class="modal fade modal-view" id="modalprofile" tabindex="-1" data-bs-keyboard="true" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                      <img src="asset/img/profile/profile1.png" alt="" />
+                      <div class="detail text-center">
+                        <div class="name">
+                          <span>DOMINGGUS CAVIN</span>
+                        </div>
+                        <div class="role">
+                          <span>Administrator</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="path me-auto"></div>
+            <span class="ms-auto me-4">SIGN WRITING</span>
+          </div>
+        </div>
+      </section>
+      <div class="wrapper-content">
+        <!-- sidebar -->
+        <aside class="sidebar" :class="{'expand': expand}">
+          <ul class="list-menu">
+            <li class="list-item">
+              <a href="dashboard.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-home-alt"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Home</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="order.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-shopping-cart"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Order</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item active">
+              <a href="historyorder.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-books"></i>
+                </div>
+                <div class="menu-name">
+                  <span>History Order</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="sign.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-tools"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Sign Instalation</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="salary.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-hand-holding-usd"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Salary</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="absent.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-clipboard-user"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Absent</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item">
+              <a href="employe.html" class="btn-link">
+                <div class="icon">
+                  <i class="fad fa-users"></i>
+                </div>
+                <div class="menu-name">
+                  <span>Employe</span>
+                </div>
+              </a>
+            </li>
+            <li class="list-item out">
+              <!-- Modal trigger button -->
+              <button type="button" class="btn btn-logout" data-bs-toggle="modal" data-bs-target="#modalId">
+                <div class="icon">
+                  <i class="fad fa-sign-out"></i>
+                </div>
+                <div class="menu-name">
+                  <span>LOGOUT</span>
+                </div>
+              </button>
+
+              <!-- Modal Body -->
+              <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+              <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <h5 class="modal-title" id="modalTitleId">Modal title</h5> -->
+                      <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    </div>
+                    <div class="modal-body text-center" style="color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal">Are you want to logout?</div>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <button type="button" class="btn" data-bs-dismiss="modal" style="border-radius: 30px; background: #ff1010; color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal">Close</button>
+                      <a href="login.html" class="btn m-0" style="border-radius: 30px; background: #6d6d6d; color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal; padding: 6px 12px">Ok</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </aside>
+        <!-- main content -->
+        <div class="main">
+          <main>
+            <section class="content">
+              <div class="card_">
+                <div class="card-body">
+                  <div class="head-menu d-flex justify-content-between align-items-center">
+                    <h2 class="card-title">HISTORY ORDER TAIRIPA PUTRA MANDIRI</h2>
+                    <div class="action d-flex justify-content-center align-items-center">
+                      <!-- <button type="button" class="actionbtn" data-bs-toggle="modal" data-bs-target="#modaladd">
+                        <i class="fad fa-plus-circle"></i>
+                        <span>Tambah Order</span>
+                      </button> -->
+                      <!-- <button type="button" class="actionbtn" data-bs-toggle="modal" data-bs-target="#modaldelete"><i class="fad fa-trash-alt"></i></button> -->
+                    </div>
+                  </div>
+                  <!-- Modal add -->
+                  <div class="modal fade" id="modaladd" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modalTitleId">ADD ORDER</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="" class="needs-validation" novalidate id="myForm">
+                            <div class="input-group g-2 w-100 d-flex">
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">Date</label>
+                                <input type="date" class="form-control" required />
+                              </div>
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">Size</label>
+                                <input type="text" class="form-control" required />
+                              </div>
+                            </div>
+                            <div class="input-group w-100 d-flex">
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">FMD</label>
+                                <input type="text" class="form-control" required />
+                              </div>
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">QTY</label>
+                                <input type="number" class="form-control" required />
+                              </div>
+                            </div>
+                            <div class="input-group w-100 d-flex">
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">Departement</label>
+                                <input type="text" class="form-control" required />
+                              </div>
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">Note</label>
+                                <input type="text" class="form-control" required />
+                              </div>
+                            </div>
+                            <div class="input-group w-100 d-flex">
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">Requestor Name</label>
+                                <input type="text" class="form-control" required />
+                              </div>
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">Add Note</label>
+                                <input type="text" class="form-control" required />
+                              </div>
+                            </div>
+                            <div class="input-group w-100 d-flex align-items-end">
+                              <div class="mb-3 col-lg-6">
+                                <label for="" class="form-label">Requestor Name</label>
+                                <input type="file" class="form-control file" required />
+                              </div>
+                              <div class="mb-3 col-lg-6 d-flex justify-content-end">
+                                <!-- Tombol submit -->
+                                <button type="submit" class="btn del" id="submitBtn">Add</button>
+
+                                <!-- Pesan sukses (tersembunyi secara default) -->
+                                <div class="success d-none d-flex flex-column justify-content-center align-items-center" id="successMessage">
+                                  <button type="button" class="btn btn-success_">
+                                    <i class="fad fa-check"></i>
+                                  </button>
+                                  <span>ADD SUCCESSFUL</span>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <table id="example" class="table display" style="width: 100%">
+                        <thead>
+                          <tr>
+                            <th>NO</th>
+                            <th>DATE</th>
+                            <th>FMD</th>
+                            <th>DEPT</th>
+                            <th>REQUESTOR BY</th>
+                            <th>TYPES OF SIGN</th>
+                            <th>SIZE</th>
+                            <th>QTY</th>
+                            <th>NOTE</th>
+                            <th>ADDNOTE</th>
+                            <th>Action</th>
+                            <!-- <th class="cbox"></th> -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1</td>
+                            <td>01/01/2024</td>
+                            <td>FMD001</td>
+                            <td>IT</td>
+                            <td>John Doe</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Large</td>
+                            <td>10</td>
+                            <td>Urgent</td>
+                            <td>Deliver by 15th</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button type="button" class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+
+                              <div class="form-history d-none">
+                                <form action="">
+                                  <div class="input">
+                                    <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                                      <label for="">Box Truck sender name</label>
+                                      <input type="text" class="form-control" />
+                                    </div>
+                                    <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                                      <label for="">Date </label>
+                                      <input type="date" class="form-control" />
+                                    </div>
+                                    <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                                      <label for="">upload receipt sign (box truck sender)</label>
+                                      <input type="file" class="form-control" />
+                                    </div>
+                                    <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+                                      <label for="">photo proof of delivery</label>
+                                      <input type="file" class="form-control" />
+                                    </div>
+                                  </div>
+                                  <button class="btn d-flex flex-column justify-content-center align-items-center">
+                                    <span>Done</span>
+                                    <i class="fad fa-paper-plane"></i>
+                                  </button>
+                                </form>
+                              </div>
+                              <script>
+                                document.querySelectorAll(".done").forEach(function (button) {
+                                  button.addEventListener("click", function () {
+                                    // Temukan elemen form-history dalam baris yang sama
+                                    const formHistory = this.parentElement.querySelector(".form-history");
+                                    formHistory.classList.remove("d-none");
+                                  });
+                                });
+                              </script>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>2</td>
+                            <td>05/01/2024</td>
+                            <td>FMD002</td>
+                            <td>Marketing</td>
+                            <td>Jane Smith</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Medium</td>
+                            <td>5</td>
+                            <td>Standard</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>3</td>
+                            <td>08/01/2024</td>
+                            <td>FMD003</td>
+                            <td>HR</td>
+                            <td>Mike Wilson</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Large</td>
+                            <td>3</td>
+                            <td>ASAP</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>4</td>
+                            <td>12/01/2024</td>
+                            <td>FMD004</td>
+                            <td>Finance</td>
+                            <td>Anna Johnson</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Small</td>
+                            <td>100</td>
+                            <td>Design Change</td>
+                            <td>Urgent</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>5</td>
+                            <td>15/01/2024</td>
+                            <td>FMD005</td>
+                            <td>Sales</td>
+                            <td>Chris Evans</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Medium</td>
+                            <td>20</td>
+                            <td>Urgent</td>
+                            <td>Deliver by 20th</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>6</td>
+                            <td>18/01/2024</td>
+                            <td>FMD006</td>
+                            <td>Marketing</td>
+                            <td>Emily Watson</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Large</td>
+                            <td>4</td>
+                            <td>Design Change</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>7</td>
+                            <td>20/01/2024</td>
+                            <td>FMD007</td>
+                            <td>IT</td>
+                            <td>William Brown</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Medium</td>
+                            <td>10</td>
+                            <td>Standard</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>8</td>
+                            <td>22/01/2024</td>
+                            <td>FMD008</td>
+                            <td>HR</td>
+                            <td>David Lee</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Small</td>
+                            <td>50</td>
+                            <td>Urgent</td>
+                            <td>Deliver by 30th</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>9</td>
+                            <td>25/01/2024</td>
+                            <td>FMD009</td>
+                            <td>Finance</td>
+                            <td>Susan White</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Large</td>
+                            <td>15</td>
+                            <td>ASAP</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>10</td>
+                            <td>28/01/2024</td>
+                            <td>FMD010</td>
+                            <td>Sales</td>
+                            <td>Tom Green</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Medium</td>
+                            <td>100</td>
+                            <td>Standard</td>
+                            <td>Urgent</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>11</td>
+                            <td>01/02/2024</td>
+                            <td>FMD011</td>
+                            <td>Marketing</td>
+                            <td>Lisa Black</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Large</td>
+                            <td>3</td>
+                            <td>Urgent</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>12</td>
+                            <td>05/02/2024</td>
+                            <td>FMD012</td>
+                            <td>IT</td>
+                            <td>John Doe</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Medium</td>
+                            <td>10</td>
+                            <td>Design Change</td>
+                            <td>Deliver by 15th</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>13</td>
+                            <td>10/02/2024</td>
+                            <td>FMD013</td>
+                            <td>HR</td>
+                            <td>Mike Wilson</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Large</td>
+                            <td>5</td>
+                            <td>Urgent</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>14</td>
+                            <td>15/02/2024</td>
+                            <td>FMD014</td>
+                            <td>Finance</td>
+                            <td>Anna Johnson</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Medium</td>
+                            <td>20</td>
+                            <td>ASAP</td>
+                            <td>None</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>15</td>
+                            <td>18/02/2024</td>
+                            <td>FMD015</td>
+                            <td>Sales</td>
+                            <td>Chris Evans</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Large</td>
+                            <td>4</td>
+                            <td>Design Change</td>
+                            <td>Urgent</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>16</td>
+                            <td>20/02/2024</td>
+                            <td>FMD016</td>
+                            <td>Marketing</td>
+                            <td>Emily Watson</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Small</td>
+                            <td>50</td>
+                            <td>Design Change</td>
+                            <td>Standard</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>17</td>
+                            <td>25/02/2024</td>
+                            <td>FMD017</td>
+                            <td>IT</td>
+                            <td>William Brown</td>
+                            <td><img src="asset/img/SIGN 5.png" alt="" /></td>
+                            <td>Medium</td>
+                            <td>15</td>
+                            <td>ASAP</td>
+                            <td>Deliver by 30th</td>
+                            <!-- <td class="cbox"></td> -->
+                            <td>
+                              <!-- <button class="btn done">Done</button> -->
+                              <button class="btn delete" data-bs-toggle="modal" data-bs-target="#modaldelete">
+                                <i class="fad fa-trash-alt"></i>
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- footer -->
+            <footer>@ 2024 Tairipa Putra Mandiri. All rights reserved</footer>
+          </main>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Body -->
+    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <div class="modal fade" id="modaldelete" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <span>Are you sure want to delete the order?</span>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-bs-dismiss="modal">Cancle</button>
+              <button type="button" class="btn del">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <!-- chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="asset/js/style.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function logout() {
+        Swal.fire({
+          title: "Are you sure you want to logout?",
+          text: "You will need to login again to access your account!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, logout!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Aksi logout dilakukan di sini, misalnya redirect ke halaman logout
+            window.location.href = "/logout"; // Ganti dengan URL logout yang sesuai
+          }
+        });
+      }
+    </script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.5.0/js/dataTables.rowReorder.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.5.0/js/rowReorder.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.js"></script>
+    <script>
+      new DataTable("#example", {
+        responsive: true,
+        rowReorder: {
+          selector: "td:nth-child(2)",
+        },
+        // columnDefs: [
+        //   {
+        //     orderable: false,
+        //     render: DataTable.render.select(),
+        //     targets: -1,
+        //   },
+        // ],
+        // select: {
+        //   style: "os",
+        //   selector: "td:last-child",
+        // },
+        order: [[1, "asc"]],
+      });
+    </script>
+  </body>
+</html>

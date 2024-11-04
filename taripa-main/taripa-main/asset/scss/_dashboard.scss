@@ -1,0 +1,38 @@
+@import "mixin";
+@import "component";
+
+.dashboard {
+  background: #fff;
+  width: 100%;
+  height: auto;
+}
+#dcard1 {
+  background: #665eb8;
+}
+#dcard2 {
+  background: #f56732;
+}
+#dcard3 {
+  background: #f56732;
+}
+#dcard4 {
+  background: #f56732;
+}
+.card {
+  .card-body {
+    span {
+      font-size: 20px;
+      margin-top: 12px;
+      font-weight: 300;
+      color: #fff;
+    }
+  }
+}
+.cont {
+  font-size: 44px;
+  font-weight: 700;
+  color: #fff;
+  i {
+    margin-right: 20px;
+  }
+}

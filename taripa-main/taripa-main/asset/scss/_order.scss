@@ -1,0 +1,119 @@
+.modal-content {
+  border-radius: 30px !important;
+  background: #d9d9d9 !important;
+}
+.modal-body {
+  form {
+    .input-group {
+      label {
+        color: #000;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: italic;
+        font-weight: 300;
+        line-height: normal;
+      }
+      input {
+        color: #000;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: italic;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+    .form-control {
+      border-radius: 30px;
+      background: #808080;
+      width: 100%;
+      padding: 18px;
+    }
+    input {
+      &.file {
+        font-style: normal;
+      }
+    }
+    ::-webkit-file-upload-button {
+      display: none;
+    }
+    .btn {
+      padding: 18px 60px;
+      border-radius: 30px;
+      background: #3abd2f;
+      color: #000;
+      font-family: Inter;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+    .success {
+      .btn-success_ {
+        padding: 0;
+        width: 75px;
+        height: 75px;
+        font-size: 32px;
+        color: #fff;
+        border-radius: 50%;
+        &.show {
+          display: block;
+        }
+        span {
+          color: #000;
+          font-family: Inter;
+          font-size: 15px;
+          font-style: italic;
+          font-weight: 600;
+          line-height: normal;
+        }
+      }
+    }
+  }
+  span {
+    color: #000;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+.modal-header,
+.modal-footer,
+.modal-body {
+  border: none !important;
+}
+#modaldelete {
+  text-align: center;
+  .modal-footer {
+    text-align: center;
+    justify-content: center;
+    margin-top: 26px;
+    .btn {
+      border-radius: 30px;
+      background: #808080;
+      padding: 12px 42px;
+    }
+    .del {
+      border-radius: 30px;
+      background: #ff0205;
+    }
+  }
+}
+#modaldeleteall {
+  text-align: center;
+  .modal-footer {
+    text-align: center;
+    justify-content: center;
+    margin-top: 26px;
+    .btn {
+      border-radius: 30px;
+      background: #808080;
+      padding: 12px 42px;
+    }
+    .del {
+      border-radius: 30px;
+      background: #ff0205;
+    }
+  }
+}

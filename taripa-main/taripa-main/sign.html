@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Dashboard</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="css/style.min.css" />
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+
+  <!-- icon -->
+  <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet"
+    type="text/css" />
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.bootstrap5.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.5.0/css/rowReorder.bootstrap5.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.3/css/responsive.bootstrap5.css" />
+
+</head>
+<style>
+  .status-done {
+    background: #00b050 !important;
+    color: #fff;
+  }
+</style>
+
+<body>
+  <div class="wrapper" x-data="{ expand: true }" x-init="
+         if (window.innerWidth < 992) { expand = false }
+         window.addEventListener('resize', () => {
+           if (window.innerWidth < 992) {
+             expand = false;
+           } else {
+             expand = true;
+           }
+         });
+       ">
+    <!-- navbar -->
+    <nav class="navbar">
+      <div class="container-fluid m-0">
+        <div class="heading" :class="{'expand': expand}">
+          <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#logo">
+            <img src="asset/img/logo/logo.webp" class="me-4" alt="" />
+          </button>
+          <!-- modal foto -->
+          <div class="modal fade modal-view" id="logo" tabindex="-1" data-bs-keyboard="true" role="dialog"
+            aria-labelledby="modalTitleId" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center align-items-center">
+                  <img src="asset/img/logo/logo.webp" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="brand">
+            <span>TAIRIPA PUTRA MANDIRI</span>
+          </div>
+        </div>
+
+        <button @click="expand = !expand" class="bttn toggle me-auto" :class="{'open' : expand}">
+          <!-- <i class="fas fa-bars fa-2x"></i> -->
+          <div class="bar" id="top"></div>
+          <div class="bar" id="center"></div>
+          <div class="bar" id="bottom"></div>
+        </button>
+        <div class="page-title mx-auto">
+          <h1>Dashboard</h1>
+        </div>
+        <div class="logout ms-auto">
+          <a href="login.html" class="bttn">
+            <!-- <i class="fad fa-sign-out-alt fa-2x"></i> -->
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- end navbar -->
+    <!-- sig writing -->
+    <section class="sign">
+      <div class="container-fluid m-0 p-0">
+        <div class="sign-content d-flex align-items-center">
+          <div class="profile d-flex align-items-center" :class="{'expand': expand}">
+            <button type="button" class="btn-modal" data-bs-toggle="modal" data-bs-target="#modalprofile">
+              <img src="asset/img/profile/profile1.png" class="me-4" alt="" />
+            </button>
+            <div class="details">
+              <div class="role">
+                <span>ADMINISTRATOR</span>
+              </div>
+              <div class="name">
+                <span>DOMINGGUS CAVIN</span>
+              </div>
+            </div>
+            <!-- modal foto -->
+            <div class="modal fade modal-view" id="modalprofile" tabindex="-1" data-bs-keyboard="true" role="dialog"
+              aria-labelledby="modalTitleId" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                    <img src="asset/img/profile/profile1.png" alt="" />
+                    <div class="detail text-center">
+                      <div class="name">
+                        <span>DOMINGGUS CAVIN</span>
+                      </div>
+                      <div class="role">
+                        <span>Administrator</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="path me-auto"></div>
+          <span class="ms-auto me-4">SIGN WRITING</span>
+        </div>
+      </div>
+    </section>
+    <div class="wrapper-content">
+      <!-- sidebar -->
+      <aside class="sidebar" :class="{'expand': expand}">
+        <ul class="list-menu">
+          <li class="list-item">
+            <a href="dashboard.html" class="btn-link">
+              <div class="icon">
+                <i class="fad fa-home-alt"></i>
+              </div>
+              <div class="menu-name">
+                <span>Home</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="order.html" class="btn-link">
+              <div class="icon">
+                <i class="fad fa-shopping-cart"></i>
+              </div>
+              <div class="menu-name">
+                <span>Order</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="historyorder.html" class="btn-link">
+              <div class="icon">
+                <i class="fad fa-books"></i>
+              </div>
+              <div class="menu-name">
+                <span>History Order</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-item active">
+            <a href="sign.html" class="btn-link">
+              <div class="icon">
+                <i class="fad fa-tools"></i>
+              </div>
+              <div class="menu-name">
+                <span>Sign Instalation</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="salary.html" class="btn-link">
+              <div class="icon">
+                <i class="fad fa-hand-holding-usd"></i>
+              </div>
+              <div class="menu-name">
+                <span>Salary</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="absent.html" class="btn-link">
+              <div class="icon">
+                <i class="fad fa-clipboard-user"></i>
+              </div>
+              <div class="menu-name">
+                <span>Absent</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-item">
+            <a href="employe.html" class="btn-link">
+              <div class="icon">
+                <i class="fad fa-users"></i>
+              </div>
+              <div class="menu-name">
+                <span>Employe</span>
+              </div>
+            </a>
+          </li>
+          <li class="list-item out">
+            <!-- Modal trigger button -->
+            <button type="button" class="btn btn-logout" data-bs-toggle="modal" data-bs-target="#modalId">
+              <div class="icon">
+                <i class="fad fa-sign-out"></i>
+              </div>
+              <div class="menu-name">
+                <span>LOGOUT</span>
+              </div>
+            </button>
+
+            <!-- Modal Body -->
+            <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+            <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="modalTitleId">Modal title</h5> -->
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                  </div>
+                  <div class="modal-body text-center" style="color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal">Are you want to logout?</div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn" data-bs-dismiss="modal" style="border-radius: 30px; background: #ff1010; color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal">Close</button>
+                    <a href="login.html" class="btn m-0" style="border-radius: 30px; background: #6d6d6d; color: #000; text-align: center; font-family: Inter; font-size: 14px; font-style: normal; font-weight: 700; line-height: normal; padding: 6px 12px">Ok</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </aside>
+      <!-- main content -->
+      <div class="main">
+        <main>
+          <section class="content">
+            <div class="card_">
+              <div class="card-body">
+                <div class="head-menu d-flex justify-content-between align-items-center">
+                  <h2 class="card-title">INSTALLATION OF SIGN PT.TAIRIPA PUTRA MANDIRI</h2>
+                  <div class="action d-flex justify-content-center align-items-center">
+                    <a href="signchart.html" type="button" class="actionbtn" style="text-decoration: none;">
+                      <i class="fad fa-chart-line"></i>
+                    </a>
+                    <div class="add">
+                      <button type="button" class="actionbtn" id="toggleButton">
+                        <i class="fad fa-plus-circle"></i>
+                        <span>Tambah Data</span>
+                      </button>
+                      <!-- List button yang akan muncul setelah tombol diklik -->
+                      <div class="actionlist" id="actionList">
+                        <div class="button-list hide" id="buttonList">
+                          <button type="button" class="actionbtn_add" id="toggleObserve">
+                            <i class="fad fa-search"></i>
+                            <span>Observation</span>
+                          </button>
+                          <button type="button" class="actionbtn_add" id="toggleInstall">
+                            <i class="fad fa-cogs"></i>
+                            <span>Instalation</span>
+                          </button>
+                          <button type="button" class="actionbtn_add" id="toggleObsins">
+                            <i class="fad fa-search"></i>
+                            <i class="fad fa-cogs"></i>
+                            <span>Observation Instalation</span>
+                          </button>
+                        </div>
+
+                        <!-- Form yang akan muncul sesuai tombol -->
+                        <div class="observeform hide" id="observe">
+                          <div class="card">
+                            <div class="card-header d-flex justify-content-center align-items-center">
+                              <i class="fad fa-search"></i>
+                              <span>Observation Add</span>
+                            </div>
+                            <div class="card-body">
+                              <form action="">
+                                <div class="form-container">
+                                  <div class="column">
+                                    <div class="mb-3">
+                                      <label for="">Input Date</label>
+                                      <input type="date" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="">Input Image (IMG)</label>
+                                      <input type="file" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="">Note</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                    <div class="">
+                                      <label for="">Area</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                  </div>
+                                  <div class="column">
+                                    <div class="mb-3">
+                                      <label for="">QTY</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="">Size</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                    <button class="btn">
+                                      <i class="fad fa-plus-circle"></i>
+                                      <span>Add</span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="installform hide" id="install">
+                          <div class="card">
+                            <div class="card-header d-flex justify-content-center align-items-center">
+                              <i class="fad fa-cogs"></i>
+                              <span>Instalattion add</span>
+                            </div>
+                            <div class="card-body">
+                              <form action="">
+                                <div class="form-container">
+                                  <div class="column">
+                                    <div class="mb-3">
+                                      <label for="">Input Date</label>
+                                      <input type="date" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="">Input Image before (IMG)</label>
+                                      <input type="file" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="">Input Image after (IMG)</label>
+                                      <input type="file" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="">Area</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                    <div class="">
+                                      <label for="">Note</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                  </div>
+                                  <div class="column">
+                                    <div class="mb-3">
+                                      <label for="">QTY</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="">Size</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                    <button class="btn">
+                                      <i class="fad fa-plus-circle"></i>
+                                      <span>Add</span>
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="obsinsform hide" id="obsins">
+                          <div class="card">
+                            <div class="card-header d-flex justify-content-center align-items-center">
+                              <i class="fad fa-search"></i>
+                              <span>Observation Add</span>
+                            </div>
+                            <div class="card-body">
+                              <form action="">
+                                <div class="form__">
+                                  <div class="form-container">
+                                    <div class="column">
+                                      <div class="mb-3">
+                                        <label for="">Input Date</label>
+                                        <input type="date" class="form-control">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="">Input Image (IMG)</label>
+                                        <input type="file" class="form-control">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="">Note</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="">
+                                        <label for="">Area</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                    </div>
+                                    <div class="column">
+                                      <div class="mb-3">
+                                        <label for="">QTY</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="">Size</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="border"></div>
+                                  <div class="form-container">
+                                    <div class="column">
+                                      <div class="mb-3">
+                                        <label for="">Input Date</label>
+                                        <input type="date" class="form-control">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="">Input Image before (IMG)</label>
+                                        <input type="file" class="form-control">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="">Input Image after (IMG)</label>
+                                        <input type="file" class="form-control">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="">Area</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="">
+                                        <label for="">Note</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                    </div>
+                                    <div class="column">
+                                      <div class="mb-3">
+                                        <label for="">QTY</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <div class="mb-3">
+                                        <label for="">Size</label>
+                                        <input type="text" class="form-control">
+                                      </div>
+                                      <button class="btn">
+                                        <i class="fad fa-plus-circle"></i>
+                                        <span>Add</span>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <script>
+                      // Fungsi untuk menutup semua form
+                      function closeAllForms() {
+                        document.getElementById('observe').classList.add('hide');
+                        document.getElementById('install').classList.add('hide');
+                        document.getElementById('obsins').classList.add('hide');
+                      }
+
+                      // Toggle untuk menampilkan button list
+                      document.getElementById('toggleButton').addEventListener('click', function (event) {
+                        var buttonList = document.getElementById('buttonList');
+                        buttonList.classList.toggle('hide');
+                        event.stopPropagation(); // Mencegah event ini memicu klik di document
+                      });
+
+                      // Klik di luar actionlist akan menutup button list
+                      document.addEventListener('click', function (event) {
+                        var actionList = document.getElementById('actionList');
+                        var buttonList = document.getElementById('buttonList');
+
+                        // Periksa apakah klik berada di luar actionList
+                        if (!actionList.contains(event.target)) {
+                          buttonList.classList.add('hide');
+                          closeAllForms(); // Tutup semua form saat button list ditutup
+                        }
+                      });
+
+                      // Mencegah klik dalam actionList menutup button list
+                      document.getElementById('actionList').addEventListener('click', function (event) {
+                        event.stopPropagation(); // Mencegah event bubbling keluar dari actionList
+                      });
+
+                      // Toggle untuk menampilkan form saat tombol dalam button-list diklik
+                      document.getElementById('toggleObserve').addEventListener('click', function () {
+                        var observe = document.getElementById('observe');
+                        if (observe.classList.contains('hide')) {
+                          closeAllForms(); // Tutup form lain jika observe dibuka
+                          observe.classList.remove('hide');
+                        } else {
+                          observe.classList.add('hide');
+                        }
+                      });
+
+                      document.getElementById('toggleInstall').addEventListener('click', function () {
+                        var install = document.getElementById('install');
+                        if (install.classList.contains('hide')) {
+                          closeAllForms(); // Tutup form lain jika install dibuka
+                          install.classList.remove('hide');
+                        } else {
+                          install.classList.add('hide');
+                        }
+                      });
+
+                      document.getElementById('toggleObsins').addEventListener('click', function () {
+                        var obsins = document.getElementById('obsins');
+                        if (obsins.classList.contains('hide')) {
+                          closeAllForms(); // Tutup form lain jika obsins dibuka
+                          obsins.classList.remove('hide');
+                        } else {
+                          obsins.classList.add('hide');
+                        }
+                      });
+                    </script>
+                    <button type="button" class="actionbtn" data-bs-toggle="modal" data-bs-target="#modaldeleteall">
+                      <i class="fad fa-trash-alt"></i>
+                      <span>Hapus Semua</span>
+                    </button>
+                    <!-- <button type="button" class="actionbtn" data-bs-toggle="modal" data-bs-target="#modaldelete"><i class="fad fa-trash-alt"></i></button> -->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <table id="example" class="table sign display wrap" style="width: 100%">
+                      <thead>
+                        <tr>
+                          <th class="sign_">NO</th>
+                          <th class="sign_">TANGGAL</th>
+                          <th class="sign_">FOTO</th>
+                          <th class="sign_">QTY</th>
+                          <th class="sign_">UKURAN</th>
+                          <th class="sign_">KETERANGAN</th>
+                          <th class="sign___">AREA</th>
+                          <th class="sign__">TANGGAL</th>
+                          <th class="sign__">FOTO SEBELUM</th>
+                          <th class="sign__">FOTO SESUDAH</th>
+                          <th class="sign__">QTY</th>
+                          <th class="sign__">STATUS</th>
+                          <th class="sign__">KETERANGAN</th>
+                          <th class="sign__">Ket. TAMBAHAN</th>
+                          <th class="sign__">Action</th>
+                          <!-- <th class="cbox"></th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>01/01/2024</td>
+                          <td><img src="asset/img/sign/rencana1.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>5</td>
+                          <td>80x80 (4l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Dekat Mall ABC</td>
+                          <td>10/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>03/01/2024</td>
+                          <td><img src="asset/img/sign/2.1.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>3</td>
+                          <td>60x60 (2l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Setelah Lampu Merah XY</td>
+                          <td>09/02/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/2.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>05/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>2</td>
+                          <td>100x100 (5l)</td>
+                          <td>Terbakar</td>
+                          <td class="sign___">Dekat Kantor Polisi</td>
+                          <td>12/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>07/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>6</td>
+                          <td>70x70 (3l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Depan Sekolah ABC</td>
+                          <td>15/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>09/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>4</td>
+                          <td>60x60 (2l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Depan Pasar Tradisional</td>
+                          <td>17/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>11/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>8</td>
+                          <td>90x90 (4l)</td>
+                          <td>Rusak Parah</td>
+                          <td class="sign___">Depan Restoran XYZ</td>
+                          <td>20/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>13/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>7</td>
+                          <td>70x70 (3l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Depan Puskesmas</td>
+                          <td>22/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>8</td>
+                          <td>15/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>6</td>
+                          <td>80x80 (4l)</td>
+                          <td>Terbakar</td>
+                          <td class="sign___">Samping Taman Kota</td>
+                          <td>24/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>9</td>
+                          <td>17/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>9</td>
+                          <td>90x90 (4l)</td>
+                          <td>Rusak Parah</td>
+                          <td class="sign___">Depan SPBU XYZ</td>
+                          <td>27/02/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>10</td>
+                          <td>19/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>10</td>
+                          <td>100x100 (5l)</td>
+                          <td>Terbakar</td>
+                          <td class="sign___">Dekat Kantor Pos</td>
+                          <td>01/03/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>11</td>
+                          <td>21/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>7</td>
+                          <td>70x70 (3l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Depan Gedung Serbaguna</td>
+                          <td>03/03/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>12</td>
+                          <td>23/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>4</td>
+                          <td>60x60 (2l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Depan Masjid Agung</td>
+                          <td>06/03/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>13</td>
+                          <td>25/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>5</td>
+                          <td>80x80 (4l)</td>
+                          <td>Terbakar</td>
+                          <td class="sign___">Dekat Toko Buku</td>
+                          <td>09/03/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>14</td>
+                          <td>27/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>8</td>
+                          <td>100x100 (5l)</td>
+                          <td>Rusak Parah</td>
+                          <td class="sign___">Depan Terminal Bus</td>
+                          <td>12/03/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>15</td>
+                          <td>29/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>6</td>
+                          <td>70x70 (3l)</td>
+                          <td>Pudar</td>
+                          <td class="sign___">Depan Universitas ABC</td>
+                          <td>15/03/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                        <tr>
+                          <td>16</td>
+                          <td>31/01/2024</td>
+                          <td><img src="asset/img/sign/2.jpeg" width="50" alt="Foto Rencana Sign" /></td>
+                          <td>10</td>
+                          <td>60x60 (2l)</td>
+                          <td>Rusak</td>
+                          <td class="sign___">Dekat Pintu Tol XYZ</td>
+                          <td>17/03/2024</td>
+                          <td><img src="asset/img/sign/1.jpeg" width="50" alt="asset/img/sign/1.jpeg"></td>
+                          <td><img src="asset/img/sign/1.1.jpeg" width="50" alt="asset/img/sign/1.1.jpeg"></td>
+                          <td>1</td>
+                          <td><button class="btn btn_selesai" onclick="tandaiSelesai(this)"><span class="me-1">Tandai
+                                Selesai</span><i class="fad fa-check-double"></i></button></td>
+                          <td>On Proccess</td>
+                          <td></td>
+                          <td>
+                            <button type="button" class="btn delete" data-bs-toggle="modal"
+                              data-bs-target="#modaldelete">
+                              <i class="fad fa-trash-alt"></i>
+                              Delete
+                            </button>
+                          </td>
+
+                        </tr>
+                      </tbody>
+                    </table>
+                    <script>
+                      function tandaiSelesai(button) {
+                        // Cari elemen <td> status di sebelah tombol
+                        const statusCell = button.closest('td').nextElementSibling;
+
+                        // Ubah teks status menjadi "Done"
+                        statusCell.textContent = 'Done';
+
+
+                        // Atau gunakan CSS class untuk memastikan perubahan warna
+                        statusCell.classList.add('status-done');
+
+                        // Nonaktifkan tombol setelah ditekan
+                        button.disabled = true;
+                      }
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      </section>
+      <!-- Form History yang hanya ada satu -->
+      <div id="form-history-container" class="form-history d-none">
+        <form action="">
+          <div class="input">
+            <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+              <label for="senderName">Box Truck sender name</label>
+              <input type="text" class="form-control" id="senderName" />
+            </div>
+            <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+              <label for="deliveryDate">Date</label>
+              <input type="date" class="form-control" id="deliveryDate" />
+            </div>
+            <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+              <label for="receiptUpload">Upload receipt sign (box truck sender)</label>
+              <input type="file" class="form-control" id="receiptUpload" />
+            </div>
+            <div class="mx-2 row-gap-3 d-flex flex-column justify-content-center align-items-center">
+              <label for="photoProof">Photo proof of delivery</label>
+              <input type="file" class="form-control" id="photoProof" />
+            </div>
+          </div>
+          <button class="btn d-flex flex-column justify-content-center align-items-center"><span>Done</span> <i
+              class="fad fa-paper-plane"></i></button>
+        </form>
+      </div>
+
+      <!-- footer -->
+      <footer>@ 2024 Tairipa Putra Mandiri. All rights reserved</footer>
+      </main>
+    </div>
+  </div>
+  <!-- Modal Body -->
+  <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+
+  <div class="modal fade" id="modaldelete" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <span>Are you sure want to delete the order?</span>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">Cancle</button>
+            <button href="#" class="btn del">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modaldeleteall" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <span>Are you sure want to delete the order?</span>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">Cancle</button>
+            <button type="button"  class="btn del" id="toggleHapus">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Event listener untuk tombol delete
+    document.getElementById('toggleHapus').addEventListener('click', function() {
+      // Lakukan aksi penghapusan data di sini (opsional)
+  
+      // Menutup modal secara manual setelah tombol Delete ditekan
+      var modalElement = document.getElementById('modaldeleteall');
+      var modalInstance = bootstrap.Modal.getInstance(modalElement);
+  
+      if (modalInstance) {
+        modalInstance.hide(); // Menutup modal
+      }
+  
+      // Menghapus backdrop secara manual jika masih ada
+      var backdrop = document.querySelector('.modal-backdrop');
+      if (backdrop) {
+        backdrop.remove(); // Menghapus elemen backdrop
+      }
+    });
+  </script>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+
+  <!-- chart js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="asset/js/style.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    function logout() {
+      Swal.fire({
+        title: "Are you sure you want to logout?",
+        text: "You will need to login again to access your account!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, logout!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Aksi logout dilakukan di sini, misalnya redirect ke halaman logout
+          window.location.href = "/logout"; // Ganti dengan URL logout yang sesuai
+        }
+      });
+    }
+  </script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+  <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+  <script src="https://cdn.datatables.net/rowreorder/1.5.0/js/dataTables.rowReorder.js"></script>
+  <script src="https://cdn.datatables.net/rowreorder/1.5.0/js/rowReorder.bootstrap5.js"></script>
+  <script src="https://cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.js"></script>
+  <script src="https://cdn.datatables.net/responsive/3.0.3/js/responsive.bootstrap5.js"></script>
+  <script>
+    new DataTable("#example", {
+      responsive: true,
+      rowReorder: {
+        selector: "td:nth-child(2)",
+      },
+
+      // columnDefs: [
+      //   {
+      //     orderable: false,
+      //     render: DataTable.render.select(),
+      //     targets: -1,
+      //   },
+      // ],
+      // select: {
+      //   style: "os",
+      //   selector: "td:last-child",
+      // },
+      // scrollX: true,
+      order: [[1, "asc"]],
+      // columnDefs: [{ width: '20%', targets: 4 }],
+      // fixedColumns: true,
+    });
+    $(document).ready(function () {
+      var table = $('#example').DataTable(); // Inisialisasi DataTable
+
+      $('#toggleHapus').on('click', function () {
+        // Kosongkan tabel
+        table.clear().draw();
+
+        // Tampilkan pesan "The data is empty"
+        $('#emptyMessage').removeClass('hide');
+      });
+    });
+
+  </script>
+</body>
+
+</html>
